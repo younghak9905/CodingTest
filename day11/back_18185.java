@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class back_18185 {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
-		StringTokenizer st = new StringTokenizer(br.readLine());
+	static Reader in = new Reader();
+	public static void main(String[] args) throws Exception {
+
+		int N = in.nextInt();
 		int[] A = new int[N];
 		for (int i = 0; i < N; i++) {
-			A[i] = Integer.parseInt(st.nextToken());
+			A[i] = in.nextInt();
 		}
 
 		long sum = 0;
@@ -56,6 +56,34 @@ public class back_18185 {
 			sum += A[N-2]*3;
 		}
 		System.out.println(sum);
+	}
+
+	static class Reader {
+		final int SIZE = 1 << 13;
+		byte[] buffer = new byte[SIZE];
+		int index, size;
+
+		int nextInt() throws Exception {
+			int n = 0;
+			byte c;
+			while ((c = read()) <= 32);
+			do n = (n << 3) + (n << 1) + (c & 15);
+			while (isNumber(c = read()));
+			return n;
+		}
+
+		boolean isNumber(byte c) {
+			return 47 < c && c < 58;
+		}
+
+		byte read() throws Exception {
+			if (index == size) {
+				size = System.in.read(buffer, index = 0, SIZE);
+				if (size < 0)
+					buffer[0] = -1;
+			}
+			return buffer[index++];
+		}
 	}
 
 
