@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 public class back_6497 {
     static int parent[];
     static PriorityQueue<Edge> queue;
-
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -22,15 +21,17 @@ public class back_6497 {
             parent[i]=i;
         }
         long sum=0;
-        for(int i=0;i<=200001;i++)
-        {
-            st = new StringTokenizer(br.readLine());
+        while (true) {
+            String line = br.readLine();
+            if (line == null || line.trim().isEmpty()) break; // 입력이 끝났을 때 루프 탈출
+
+            st = new StringTokenizer(line);
             int s = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
-            if(s==0 && e==0) break;
+            if (s == 0 && e == 0) break; // 종료 조건
             int w = Integer.parseInt(st.nextToken());
-            queue.add(new Edge(s,e,w));
-            sum+=w;
+            queue.add(new Edge(s, e, w));
+            sum += w;
         }
 
         int unionCount=0;
@@ -71,7 +72,7 @@ public class back_6497 {
         }
     }
 
-static class Edge implements Comparable<Edge>{
+    static class Edge implements Comparable<Edge>{
     int start ,end;
     int w;
     public Edge(int start,int end,int w)
@@ -85,7 +86,7 @@ static class Edge implements Comparable<Edge>{
     {
         return this.w - o.w;
     }
-}
+    }
 }
 
 
