@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class back_1414 {
+public class back_1414 { //최소신장트리
 	static int parent[];
 	static PriorityQueue<Edge> queue;
 
