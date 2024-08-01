@@ -9,6 +9,8 @@ public class back_2042 {
 
     static long[]A;
 
+    static int start_index;
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -25,19 +27,14 @@ public class back_2042 {
                 break;
             }
         }
-        A = new long[tree*2];
-        int start_index = tree;
-        for(int i=start_index;i<start_index+N;i++)
-        {   st = new StringTokenizer(br.readLine());
-            A[i]=Long.parseLong(st.nextToken());
-        }
-        initTree(start_index-1);
-        for(int i=0;i<tree*2;i++)
-        {
-            System.out.print(A[i]);
-        }
+        A = new long[tree*2+1];
+        start_index = tree-1;
+        // for(int i=start_index+1;i<=start_index+N;i++)
+        // {   st = new StringTokenizer(br.readLine());
+        //     A[i]=Long.parseLong(st.nextToken());
+        // }
+        initTree(start_index);
 
-        int result = 0;
         for(int i=0;i<M+K;i++)
         {
             st = new StringTokenizer(br.readLine());
@@ -49,26 +46,12 @@ public class back_2042 {
                update(start_index+b,c);
            }else if(a==2)
            {
-               int start = start_index+b;
-               int end = start_index+(int)c;
-               while(start<end)
-               {
-                   if(start%2==1)
-                   {
-                       result+=A[start];
-                   }
-                   if(end%2==1)
-                   {
-                       result+=A[end];
-                   }
-                   start = (start+1)/2;
-                   end = (end-1)/2;
-               }
-               sb.append(result+"\n");
-               result =0;
+               sum(b,(int)c);
+           }
+           else{
+               return;
            }
         }
-        System.out.println(sb);
     }
     static public void initTree(int index)
     {
@@ -80,43 +63,35 @@ public class back_2042 {
 
     }
     static public void update(int index,long value)
-    {
+    {   long temp =A[index];
         A[index]=value;
-        while(index!=1)
+        long diff = value - temp;
+        while(index>1)
         {
-            A[index/2]+=value;
+            A[index/2]+=diff;
             index/=2;
         }
     }
-    static class Reader {
-        final int SIZE = 1 << 13;
-        byte[] buffer = new byte[SIZE];
-        int index, size;
-
-        int nextInt() throws Exception {
-            int n = 0;
-            byte c;
-            while ((c = read()) <= 32)
-                ;
-            do
-                n = (n << 3) + (n << 1) + (c & 15);
-            while (isNumber(c = read()));
-            return n;
-        }
-
-        boolean isNumber(byte c) {
-            return 47 < c && c < 58;
-        }
-
-        byte read() throws Exception {
-            if (index == size) {
-                size = System.in.read(buffer, index = 0, SIZE);
-                if (size < 0)
-                    buffer[0] = -1;
+    static public void sum(int s, int e)
+    {   long result = 0;
+        int start = start_index+s;
+        int end = start_index+e;
+        while(start<=end)
+        {
+            if(start%2==1)
+            {
+                result+=A[start];
             }
-            return buffer[index++];
+            if(end%2==0)
+            {
+                result+=A[end];
+            }
+            start = (start+1)/2;
+            end = (end-1)/2;
         }
+        System.out.println(result);
     }
+
 }
 /*
 5 2 2
