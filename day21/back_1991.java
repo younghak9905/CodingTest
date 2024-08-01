@@ -27,9 +27,9 @@ public class back_1991 {
 				tree[node][0]=left-'A';
 			}
 			if(right=='.'){
-				tree[node][0]=-1;
+				tree[node][1]=-1;
 			}else {
-				tree[node][0]=right-'A';
+				tree[node][1]=right-'A';
 			}
 		}
 		preOrder(0);
