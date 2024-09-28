@@ -61,7 +61,8 @@ public class back_32350 {
     }
 
     static int getPercentage(int h) {
-        int percentage =  (h*p)/100;
+        int percentage = (h * p) / 100;
         return percentage;
     }
+
 }
