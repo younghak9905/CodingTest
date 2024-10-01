@@ -1,27 +1,24 @@
-package ChungnamSWIT;
+package day26;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class a_hamburger {
+public class back_11726 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		String s = st.nextToken();
-		if(s.equals("(1)"))
+
+		int N = Integer.parseInt(st.nextToken());
+
+		long D[] = new long[N+1];
+		D[1] =1;
+		D[2]= 2;
+		for(int i=3;i<=N;i++)
 		{
-			System.out.println(0);
+			D[i]=(D[i-2]+D[i-1])%10007;
 		}
-		else{
-			if(s.equals(")1("))
-			{
-				System.out.println(2);
-			}
-			else
-			{
-				System.out.println(1);
-			}
-		}
+		System.out.println(D[N]);
+
 	}
 }

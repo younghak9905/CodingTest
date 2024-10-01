@@ -15,7 +15,6 @@ public class d_tps2 {
 		int angle = 0;
 		c = new Point(0,0);
 		p = new Point(0,0);
-		int dir;
 		for(int i=0;i<N;i++) {
 			String s = br.readLine();
 			if(s.equals("MR"))
@@ -47,9 +46,7 @@ public class d_tps2 {
 
 	}
 	static void move(int angle,String keyword)
-	{	int dir=angle;
-
-
+	{	    int dir=angle;
 			if(keyword.equals("D"))
 			{
 				dir=dir+1;
@@ -62,8 +59,6 @@ public class d_tps2 {
 
 			p.x+=dx[dir];
 			p.y+=dy[dir];
-
-
 	}
 
 	static class Point{

@@ -33,7 +33,7 @@ public class c_ana {
 				{
 					count++;
 				}
-				else if(count==2)
+				else if(count==2) //ANN
 				{
 					count=0;
 				}
