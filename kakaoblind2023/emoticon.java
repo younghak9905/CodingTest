@@ -5,98 +5,68 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class emoticon {
+
+	static int []w;
+	static int []sales={10,20,30,40};
+	static int depth=0;
+	static int maxService=0;
+	static int maxMoney=0;
+
+	static int [][]usersBoard;
+	static int []emoticonsBoard;
 	public int[] solution(int[][] users, int[] emoticons) {
 		int[] answer = {};
-		ArrayList<Integer> list = new ArrayList<>();
-		answer = new int[list.size()];
+		usersBoard = users;
+		emoticonsBoard = emoticons;
+		depth = emoticons.length;
 		int max=0;
-		Map<Integer, User> termap = new HashMap<>();
-		for (int i = 0; i < users.length; i++) {
-			termap.put(i, new User(users[i][0], users[i][1],0));
-			if(users[i][0]>max)
-			{
-				max = users[i][0];
+		w = new int[4];
+		backtracking(0);
+
+		return new int[]{maxService,maxMoney};
+	}
+	static void backtracking(int cnt)
+	{
+			if(cnt == depth) {
+				calculate();
+				return;
 			}
-		}
-
-		ArrayList<Emoticon> pay = new ArrayList<>();
-		for(int i=0;i<emoticons.length;i++)
-		{
-			pay.add(new Emoticon(0, emoticons[i]));
-		}
-
-		int result=0;
-
-
-		int resultMax=0;
-		int maxIndex=40;
-
-		int total=0;
-
-		int []bag= new int[users.length];
-
-	for(int k=10;k<=40;k+=10)
-	{	total=0;
-		for(int i=0;i< users.length;i++)
-		{
-			User user = termap.get(i);
-
-			for(int j=0;j<emoticons.length;j++)
+			for(int i=0;i<sales.length;i++)
 			{
-				Emoticon emoticon = pay.get(j);
-				int price = emoticon.price;
-				price=price*(100-k)/100;
-				if(user.b<=k)
-				{
-					user.bag+=price;
+				w[cnt]=sales[i];
+				backtracking(cnt+1);
+			}
+	}
+	static void calculate()
+	{
+		int service = 0;
+		int money = 0;
 
-					if(user.bag>=user.e)
-					{
-						result++;
-						user.bag=0;
-
-					}
-					total+=user.bag;
+		for (int i = 0; i < usersBoard.length; i++) {
+			int sum = 0;
+			for (int j = 0; j < emoticonsBoard.length; j++) {
+				if (usersBoard[i][0] <= w[j]) {
+					sum += emoticonsBoard[j] * (100 - w[j]) / 100;
 				}
-
 			}
+			if (sum >= usersBoard[i][1])
+				service++;
+			else money += sum;
 
 		}
-		if(resultMax<result)
-		{
-			resultMax = result;
-			maxIndex = total;
-
-		}else if(resultMax==result)
-		{
-			maxIndex=Math.max(maxIndex, total);
+		if(maxService>service) {
+			return;
 		}
-
+		if(maxService<service) {
+			maxService = service;
+			maxMoney = money;
+		}else if(maxMoney<money) //maxService==service && maxMoney<money
+		{
+			maxMoney = money;
+		}
 	}
 
 
-
-
-
-	list.add(result);
-	list.add(maxIndex);
-
-
-
-
-
-
-
-
-
-
-		answer = new int[list.size()];
-
-		for (int i = 0; i < list.size(); i++) {
-			answer[i] = list.get(i);
-		}
-		return answer;
-	}
 
 	class User{
 		int b;
@@ -122,6 +92,8 @@ public class emoticon {
 			this.price =price*(100-b)/100;
 		}
 	}
+
+
 
 	public static void main(String[] args) {
 		emoticon s = new emoticon();
