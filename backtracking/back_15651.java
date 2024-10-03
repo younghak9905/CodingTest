@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class back_15651 {
+public class back_15651 {//중복 순열
 	static int N,M;
 	static StringBuilder sb = new StringBuilder();
 	static Stack<Integer> result = new Stack<Integer>();
