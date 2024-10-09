@@ -68,30 +68,6 @@ public class emoticon {
 
 
 
-	class User{
-		int b;
-		int e;
-		int bag;
-		public User(int b, int e, int bag) {
-			this.b = b;
-			this.e = e;
-			this.bag = bag;
-		}
-	}
-
-	class Emoticon{
-		int b;
-		int price;
-		public Emoticon(int b, int price) {
-			this.b = b;
-			this.price = price;
-		}
-		public void update(int b)
-		{
-			this.b = b;
-			this.price =price*(100-b)/100;
-		}
-	}
 
 
 
