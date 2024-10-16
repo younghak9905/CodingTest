@@ -2,6 +2,7 @@ package dp;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class back_2294 {
@@ -17,28 +18,23 @@ public class back_2294 {
 			st = new StringTokenizer(br.readLine());
 			coin[i] = Integer.parseInt(st.nextToken());
 		}
-		D[0] = 1;
-		int min = K;
+		//Arrays.sort(coin);
+		for (int i = 0; i <= K; i++) {
+			D[i] = 100001;
+		}
+		D[0] = 0;
+
+
 		for (int i = 1; i <= N; i++) {
-			for (int j = 1; j<=K; j++) {
-				if (j >= coin[i]) {
-
-						D[j]=Math.min(D[j-1],D[j]+D[j-coin[i]]);  //D[1] = D[1]+D[1-1]
-
-				}
-			}//D[15] = D[14], D[15]+D[10]
-		}
-
-/*}
-		for(int i=1;i<=N;i++)
-		{
-			for(int j=K;j>=item[i][0];j--)
-			{
-				D[j] = Math.max(D[j], D[j-item[i][0]]+item[i][1]);
+			for (int j = coin[i]; j <= K; j++) {
+				D[j] = Math.min(D[j], D[j - coin[i]] + 1);
 			}
-		}*/
-			System.out.println(D[K]);
-
 		}
 
+		if (D[K] == 100001) {
+			System.out.println(-1);
+		} else {
+			System.out.println(D[K]);
+		}
+	}
 }

@@ -7,17 +7,9 @@ public class task3 {
 	static Stack<Integer> a = new Stack<>();
 	public int solution(int []D, String[] T)
 	{
+		return 0;
+	}
 
-		a.peek();
-		a.push()
-Arrays.sort(D);
-int size = D.length;
-	}
-	static void(ArrayList<Integer> A,int v)
-	{
-		int end =A.size()
-		stack.add(v);
-	}
 
 	//String 에서 C가  몇 번 나오는지 확인
 	static int countC(String s)
