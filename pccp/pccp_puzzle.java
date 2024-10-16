@@ -1,3 +1,5 @@
+package pccp;
+
 public class pccp_puzzle {
     public int solution(int[] diffs, int[] times, long limit) {
 
