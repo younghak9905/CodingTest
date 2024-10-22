@@ -16,6 +16,20 @@ public class back_2212 {
         for(int i=0; i<N; i++) {
             A[i] = Integer.parseInt(st.nextToken());
         }
+
+        int []d = new int[N-1];
         Arrays.sort(A);
+        for(int i=0;i<N-1;i++)
+        {
+            d[i]=A[i+1]-A[i];
+        }
+        Arrays.sort(d);
+        int result=0;
+        for(int i=0;i<N-K;i++)
+        {
+            result+=d[i];
+        }
+        System.out.println(result);
+
     }
 }
