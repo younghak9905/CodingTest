@@ -10,58 +10,58 @@ public class back_1655 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
-        PriorityQueue<Integer> queSec = new PriorityQueue<>((o1, o2) -> {
-            int first_abs = o1;
-            int second_abs = o2;
 
-            return first_abs - second_abs;
-        });
-        PriorityQueue<Integer> queDesc = new PriorityQueue<>((o1, o2) -> {
-            int first_abs = o1;
-            int second_abs = o2;
+        PriorityQueue<Integer> sol = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
-            return second_abs - first_abs;
-        });
-        int[] A = new int[N];
-        int[] tmp1 = new int[N];
-        int[] tmp2 = new int[N];
-        for (int i = 0; i < N; i++) {
-            int j = 0;
-            A[i] = Integer.parseInt(br.readLine());
-            queSec.add(A[i]);
-            queDesc.add(A[i]);
-            if ((i + 1) % 2 == 0) {
-                j = 0;
-                for (int k = 0; k < (i + 1) / 2; k++) {
-                     tmp1[j] = queSec.poll();
-                    tmp2[j] = queDesc.poll();
-                    j++;
+        PriorityQueue<Integer> even = new PriorityQueue<>((o1, o2) -> o1 - o2);
+        int input = 0;
+        for(int i=1;i<=N;i++)
+        {
+                input = Integer.parseInt(br.readLine());
+                if(sol.isEmpty())
+                {
+                    sol.add(input);
                 }
-                if (queSec.peek() > queDesc.peek())
-                    sb.append(queDesc.peek()+"\n");
+                else if(even.isEmpty())
+                {
+                    if(sol.peek()>input)
+                    {
+                        even.add(sol.poll());
+                        sol.add(input);
+                    }else
+                        even.add(input);
+
+
+                }
+                else if(even.peek()<input)
+                {
+                    even.add(input);
+                    if(even.size()>sol.size()+1)
+                        sol.add(even.poll());
+                }
+                else if(even.peek()>=input)
+                {
+                    sol.add(input);
+                    if(sol.size()>even.size()+1)
+                        even.add(sol.poll());
+                }
+
+                if(i%2==0)
+                    sb.append(Math.min(sol.peek(), even.peek())).append("\n");
                 else
-                    sb.append(queSec.peek());
-                for (; j >= 0; j--) {
-                    queSec.add(tmp1[j]);
-                    queDesc.add(tmp2[j]);
+                {
+                    if(i==1)
+                    {
+                        sb.append(sol.peek()).append("\n");
+                    }
+                    else if(sol.size()>even.size())
+                        sb.append(sol.peek()).append("\n");
+                    else if(sol.size()<even.size())
+                        sb.append(even.peek()).append("\n");
                 }
-            } else {
-                j=0;
-                while (!(queDesc.peek() == queSec.peek())) {
-                    tmp1[j] = queSec.poll();
-                    tmp2[j] = queDesc.poll();
-                    j++;
-                }
-                sb.append(queSec.peek() + "\n");
-                for (; j >= 0; j--) {
-                    queSec.add(tmp1[j]);
-                    queDesc.add(tmp2[j]);
-                }
-
-            }
-
         }
-        System.out.print(sb);
+        System.out.println(sb);
+
     }
 
 }
