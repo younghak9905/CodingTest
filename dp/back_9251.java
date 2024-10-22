@@ -10,17 +10,36 @@ public class back_9251 {
 
 		String sq = br.readLine();
 		String sq2 = br.readLine();
-		char []arr1 = sq.toCharArray();
-		char []arr2 = sq2.toCharArray();
-		int []D = new int[27];
-		int []D2 = new int[27];
-		int result = 0;
-		D[0]=0;
+		int sq_len = sq.length();
+		int sq2_len = sq2.length();
 
-		for(int i= arr1.length;i>0;i--)
+
+		char []arr1 = new char[sq_len+1];
+		char []arr2 = new char[sq2_len+1];
+
+		for(int i=1;i<=sq_len;i++)
 		{
-			D[i]=Math.max(D[i-1],D[i]);
+			arr1[i]=sq.charAt(i-1);
 		}
-		System.out.println(result);
+		for(int i=1;i<=sq2_len;i++)
+		{
+			arr2[i]=sq2.charAt(i-1);
+		}
+
+		int [][]D = new int[sq2_len+1][sq_len+1];
+
+
+
+		for(int i=1;i<=sq2_len;i++)
+		{
+			for(int j=1;j<=sq_len;j++)
+			{
+				if(arr2[i]==arr1[j])
+					D[i][j]=D[i-1][j-1]+1;
+				else
+					D[i][j]=Math.max(D[i-1][j], D[i][j-1]);
+			}
+		}
+		System.out.println(D[sq2_len][sq_len]);
 	}
 }
