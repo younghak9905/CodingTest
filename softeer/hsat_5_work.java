@@ -1,3 +1,5 @@
+package softeer;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -70,5 +72,7 @@ public class hsat_5_work {
         }
         System.out.println(answer);
     }
+    //
+
 
 }
