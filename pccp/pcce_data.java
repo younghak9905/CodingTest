@@ -29,10 +29,6 @@ public class pcce_data {
             return a[finalIndex]-b[finalIndex];
         });
 
-
-
-
-
         for(int i=0;i<data.length; i++){
             if(data[i][eindex]<val_ext){
                 pq.add(data[i]);
