@@ -9,7 +9,7 @@ public class back_14503 {
     static int []dy = {0,1,0,-1};
     static int N,M;
     static int [][]map;
-    static int count=0;
+    static int count=1;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
