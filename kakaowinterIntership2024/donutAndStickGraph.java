@@ -2,10 +2,12 @@ package kakaowinterIntership2024;
 
 import java.util.ArrayList;
 
+import kakaoblind2023.emoticon;
+
 public class donutAndStickGraph {
 //https://school.programmers.co.kr/learn/courses/30/lessons/258711
 
-    class Solution {
+
         static boolean visited[];
         static ArrayList<Integer> A[];
         public int[] solution(int[][] edges) {
@@ -71,7 +73,15 @@ public class donutAndStickGraph {
                 this.end=end;
             }
         }
+    public static void main(String[] args) {
+        donutAndStickGraph d = new donutAndStickGraph();
+        int[][] edges = {{2, 3}, {4, 3}, {1, 1}, {2, 1}};
+
+        int []answer = d.solution(edges);
+        System.out.println(answer);
+
+
     }
-
-
 }
+
+

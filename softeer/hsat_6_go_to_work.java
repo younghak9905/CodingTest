@@ -58,7 +58,6 @@ public class hsat_6_go_to_work {
         if (end != -1 && start == end) return;
 
         for (int i = 0; i < g.get(start).size(); i++) {
-            int a = g.get(start).size();
             int next = g.get(start).get(i);
             if (check[next]) continue;
             check[next] = true;

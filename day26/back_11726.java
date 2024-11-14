@@ -11,10 +11,10 @@ public class back_11726 {
 
 		int N = Integer.parseInt(st.nextToken());
 
-		long D[] = new long[N+1];
+		long D[] = new long[1000+1];
 		D[1] =1;
 		D[2]= 2;
-		for(int i=3;i<=N;i++)
+		for(int i=3;i<=1000;i++)
 		{
 			D[i]=(D[i-2]+D[i-1])%10007;
 		}
