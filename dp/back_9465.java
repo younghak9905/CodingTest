@@ -33,6 +33,6 @@ public class back_9465 {
             sb.append(Math.max(D[0][N],D[1][N])+"\n");
 
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
     }
 }
