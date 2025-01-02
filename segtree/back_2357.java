@@ -13,7 +13,7 @@ public class back_2357 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
-         M = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
         arr= new long[N+1];
 
         for (int i = 1; i <= N; i++) {
