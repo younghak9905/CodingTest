@@ -27,6 +27,7 @@ public class back_13023_2 {
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
             list[a].add(b);
+            list[b].add(a);
         }
         for(int i=0;i<N;i++)
         {
@@ -34,6 +35,9 @@ public class back_13023_2 {
             {   boolean []visited = new boolean[N+1];
                 visited[i] = true;
                 recur(i , 0 ,visited);
+                if(result == 1) {
+                    break; // Early exit if a valid path is found
+                }
             }
         }
         System.out.println(result);
@@ -42,12 +46,11 @@ public class back_13023_2 {
 
     static void recur(int idx , int cnt , boolean[] visited)
     {
-        if(cnt==M)
+        if(cnt==4)
         {
             result=1;
             return;
         }
-
         for(int a : list[idx])
         {
             if(!visited[a])
