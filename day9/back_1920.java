@@ -50,3 +50,10 @@ public class back_1920 {
 		sb.append(0+"\n");
 	}
 }
+
+
+
+
+
+
+
