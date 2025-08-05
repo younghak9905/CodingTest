@@ -23,28 +23,22 @@ public class back_2565 {
 
         Collections.sort(list, Comparator.comparingInt(edge -> edge.u));
         int result=0;
-        D[0]=1;
 
-        for(int i=1;i<N;i++)
-        {
+
+        for(int i=0;i<N;i++)
+        {   D[i]=1;
             for(int j=0;j<i;j++)
             {
                 if(list.get(i).v>list.get(j).v)
                 {
-                    if(D[j]>=D[i])
-                    {
-                        D[i]=D[j]+1;
-                    }
+                   D[i]=Math.max(D[i],D[j]+1);
                 }
             }
             result = Math.max(result,D[i]);
 
 
         }
-        for(int i=0;i<N;i++)
-        {
-            System.out.println(D[i]);
-        }
+
         System.out.println(N-result);
     }
     static class Edge
